@@ -1,0 +1,4 @@
+To install it, simply download and extract it. 
+Open Notepad++ and open the User Defined dialogue from the Language menu. 
+Click on import and browse to the extracted Gherkin.xml file. 
+If you open a .feature file from Notepad++, it should now have some color coding.
