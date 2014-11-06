@@ -1,5 +1,5 @@
 Feature: Compute factorial
-
+ 
 	In order to play with Lettuce
 	As beginners
 	We'll implement factorial
@@ -14,17 +14,18 @@ Feature: Compute factorial
 		When I compute its factorial
 		Then I see the number 1
 		
-	Scenario: Factorial of 2
-		Given I have the number 2
+	Scenario Outline: Factorial [0-4]
+		Given I have the number <number>
 		When I compute its factorial
-		Then I see the number 2
+		Then I see the number <result>
 		
-	Scenario: Factorial of 3
-		Given I have the number 3
-		When I compute its factorial
-		Then I see the number 6
+	Examples:
+		|number	|result	|
+		|0		|1		|
+		|1		|1		|
+		|2		|2		|
+		|3		|6		|
+		|4		|24		|
 		
-	Scenario: Factorial of 4
-		Given I have the number 4
-		When I compute its factorial
-		Then I see the number 24
+		
+		
