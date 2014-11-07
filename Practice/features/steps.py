@@ -35,11 +35,13 @@ def check_query_result(step):
     for stu_dict in step.hashes:
         for stu in world.actual_result:
             if stu.id == stu_dict['Id']:
-                assert stu.name == stu_dict['Name'], 'Actual student name:%s' % stu.name
-                assert stu.gender == stu_dict['Gender'], 'Actual student gener:%s' % stu.gender
-                assert stu.city == stu_dict['City'], 'Actual student city:%s' % stu.city
-                assert stu.year_of_birth == stu_dict['Year of birth'], 'Actual year of birth:%s' %stu.year_of_birth
-                return
+                assert stu.name == stu_dict['Name'], 'Expected: %s, Actual:%s' % (stu_dict['Name'], stu.name)
+                assert stu.gender == stu_dict['Gender'], 'Expected: %s, Actual:%s' % (stu_dict['Gender'], stu.gender)
+                assert stu.city == stu_dict['City'], 'Expected: %s Actual: %s' %(stu_dict['City'], stu.city)
+                #assert int(stu.year_of_birth) == stu_dict['Year of birth'], 'Expected: %s Actual: %s' %(stu_dict['Year of birth'], stu.year_of_birth)                                                          
+                continue
+        else:
+            return
     assert False, 'Mitmatch result'
 
 

@@ -47,8 +47,7 @@ def insertStudent(stu):
     sql_statement = 'INSERT INTO Student VALUES(?,?,?,?,?)'
     try:
         conn = getDbConn()
-        print conn
-        conn.execute(sql_statement, (stu.id, stu.name, stu.gender, stu.year_of_birth, stu.city))
+        conn.execute(sql_statement, (stu.id, stu.name, stu.gender, stu.city, stu.year_of_birth))
         conn.commit()
     except Exception, ex:
         raise ex
@@ -73,7 +72,7 @@ def getStudentInfo(by, value):
         cur.execute(sql_statement, t)
         row = cur.fetchone()
         while row is not None:
-            stu = Student(row[0], row[1], row[2], row[3], row[4])
+            stu = Student(row[0], row[1], row[2], row[4], row[3])
             result.append(stu)
             row = cur.fetchone()
         else:
@@ -85,6 +84,6 @@ def getStudentInfo(by, value):
             conn.close()
 
 if __name__ == '__main__':
-    stu = Student('20120202', 'Alex', 'Male', 1983, 'Beijing')
+    '''stu = Student('20120202', 'Alex', 'Male', 1983, 'Beijing')
     insertStudent(stu)
-    print isStudentExist('20120202')
+    print len(getStudentInfo('city', 'Beijing'))'''
